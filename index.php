@@ -6,6 +6,9 @@
     .stats {
       text-align: center;
     }
+    .footer {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -27,5 +30,8 @@
 <?php
   }
 ?>
+<div class="footer">
+  <span>Source on <a href="https://github.com/matthias-g/humble-stats">GitHub</a></span>
+</div>
 </body>
 </html>
