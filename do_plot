@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd ~/graphs/humble
+export GDFONTPATH=~/gnuplot/fonts/
+
+while read line; do
+  LD_LIBRARY_PATH=~/PDFlib/lib/ ~/gnuplot/bin/gnuplot -e "bundle='$line'" plot.gp
+done <~/graphs/humble/current_bundles

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while read line; do
+  perl ~/graphs/humble/fetch_humble_stats.pl "https://humble.pubnub.com/subscribe/6b5eeae3-796b-11df-8b2d-ef048cc31d2e/humble${line}/0/14598975363828315" >> ~/graphs/humble/stats/$line &
+done <~/graphs/humble/current_bundles
+

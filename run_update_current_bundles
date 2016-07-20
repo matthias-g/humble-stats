@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export GEM_HOME="~/.gem/ruby/2.2.0/gems"
+export PATH=~/.gem/ruby/2.2.0/bin:/package/host/localhost/ruby-2/bin:$PATH
+
+ruby ~/graphs/humble/update_current_bundles.rb ~/graphs/humble/current_bundles
