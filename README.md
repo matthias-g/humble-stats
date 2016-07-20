@@ -3,7 +3,7 @@ Humble Bundle Stats
 
 This is a small project monitoring the change of the average price of current [humble bundles](https://www.humblebundle.com).
 Usually the average price rises during the two weeks a bundle is active.
-I started developing this project after I discovered for the first time that the average price was falling in one case and I was interested in how often this happens.
+I started developing this project after I discovered that the average price was falling in one case and I was interested in how often this happens.
 
 [Here](https://16byte.de/graphs/humble) you can see the live results.
 
