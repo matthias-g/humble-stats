@@ -33,13 +33,13 @@ Where the directory `html` is accessible from the web and your crontab contains 
 ```
 */1 * * * * ~/graphs/humble/get_data
 */20 * * * * ~/graphs/humble/do_plot
-*/20 * * * * ~/graphs/humble/run_update_current_bundles
+*/20 * * * tue ~/graphs/humble/run_update_current_bundles
 ```
 
 How it works
 ------------
 
-Every 20 minutes [run_update_current_bundles](run_update_current_bundles) is being called. This script calls [update_current_bundles.rb](update_current_bundles.rb) with the correct parameters and environment variables set.
+On a Tuesday every 20 minutes [run_update_current_bundles](run_update_current_bundles) is being called. This script calls [update_current_bundles.rb](update_current_bundles.rb) with the correct parameters and environment variables set.
 [update_current_bundles.rb](update_current_bundles.rb) gets the home page of Humble Bundle and parses it for the names of the current bundles and writes them to `graphs/humble/current_bundles`.
 
 Every minute the cronjob calls [get_data](get_data). This calls [fetch_humble_stats.pl](fetch_humble_stats.pl) for every line in `current_bundles` and redirects the output to appropriate file in `graphs/humble/stats/`.
