@@ -11,6 +11,8 @@ set xlabel "time"
 
 set key left top
 
+set datafile commentschars "#!%"
+
 delta_v(x) = ( vD = x - old_v, old_v = x, vD)
 old_v = NaN
 
