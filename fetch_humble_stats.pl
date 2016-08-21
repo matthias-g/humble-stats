@@ -10,6 +10,9 @@ if ($#ARGV >= 0) {
 }
 
 my $json = get $url;
+if ($json eq "") {
+	exit;
+}
 my $decoded_json = decode_json($json);
 
 $timestamp = $decoded_json->[0]->[0]->{'timestamp'};
