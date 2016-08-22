@@ -14,7 +14,9 @@ set key left top
 set datafile commentschars "#!%"
 
 delta_v(x) = ( vD = x - old_v, old_v = x, vD)
+delta_t(x) = ( tD = x - old_t, old_t = x, tD)
 old_v = NaN
+old_t = NaN
 
 set title bundle
 set style data lines
@@ -33,5 +35,5 @@ shift15(x) = (back15 = back14, back14 = back13, back13 = back12, back12 = back11
 
 
 plot sum = init(0), "stats/".bundle using 2:1 title 'price', \
-	'' using 2:(avg15(delta_v($4))) title 'purchases' axes x1y2
+	'' using 2:(60 * avg10(delta_v($4) / delta_t($2))) title 'purchases' axes x1y2
 
