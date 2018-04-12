@@ -5,6 +5,9 @@ require 'open-uri'
 
 require 'net/http'
 require 'openssl'
+require 'json'
+
+output_file = ARGV[0] || './current_bundles'
 
 def open_url(url)
   uri = URI.parse(url)
@@ -24,10 +27,11 @@ subtabs.each { |subtab|
 }
 
 def check_line(line)
-  if line.include? "product_machine_name" then
-    line =~ /product_machine_name": "([a-z0-9_-]*)"/
-    bundle = $1
-    $output += bundle + "\n"
+  if line.include? "var productTiles" then
+    data = line.split(' = ')[1].strip!.chomp(';')
+    data = JSON.parse(data)
+    data = data.select{ |bundle| bundle['type'] == 'bundle' && ['games', 'software'].include?(bundle['tile_stamp']) }
+    data.each { |bundle| $output += bundle['bundle_machine_name'] + "\n" }
   end
 end
 
@@ -40,4 +44,6 @@ urls.each { |url|
 
 home_page.each_line { |line| check_line(line) }
 
-File.write(ARGV[0] || './current_bundles', $output) unless $output == ''
+if $output != '' || File.mtime(output_file) < (Time.now - 3 * 60 * 60)
+  File.write(output_file, $output)
+end
